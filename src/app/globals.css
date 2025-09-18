@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Prevents characters from shifting when split animation runs onComplete */
+.split > h1,
+.split > p {
+  font-kerning: none;
+}
