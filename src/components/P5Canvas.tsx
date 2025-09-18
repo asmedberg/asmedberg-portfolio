@@ -17,9 +17,22 @@ export default function P5Canvas() {
         p5Instance.current = new P5((sketch: p5) => {
           sketch.setup = () => {
             sketch.createCanvas(c.clientWidth, c.clientHeight);
+            sketch.background(`${bgColor}`);
+            sketch.colorMode(sketch.HSB);
           };
           sketch.draw = () => {
-            sketch.background(`${bgColor}`);
+            sketch.filter(sketch.BLUR, 8);
+            sketch.noStroke();
+            // sketch.fill(`${bgColor}05`);
+            sketch.fill(`#00000001`);
+            sketch.rect(0, 0, sketch.width, sketch.height);
+          };
+          sketch.mouseMoved = () => {
+            const line = sketch.mouseX - sketch.mouseY;
+
+            sketch.stroke(line, 100, 100);
+            sketch.strokeWeight(15);
+            sketch.line(sketch.pmouseX, sketch.pmouseY, sketch.mouseX, sketch.mouseY);
           };
           sketch.windowResized = () => {
             sketch.resizeCanvas(c.clientWidth, c.clientHeight);
