@@ -9,7 +9,6 @@ export default function Home() {
         <Section>
           <Intro />
         </Section>
-        <Section>stuff here</Section>
       </main>
       <P5Canvas />
     </>
