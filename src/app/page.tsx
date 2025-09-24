@@ -1,98 +1,51 @@
-"use client";
-
+import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 
 import Section from "@/components/layout/Section";
 import Intro from "@/components/sections/Intro";
-import ImageDialog from "@/components/ImageDialog";
 
-import fgcoHomeHero from "@/assets/fgco-home-hero.png";
-import fgcoDame from "@/assets/fgco-mobile-fullpage-dame-dedication.png";
-import fgcoSinfire from "@/assets/fgco-fullpage-sinfire.png";
+import fgcoScreenshot from "@/assets/fgco-screenshot.png";
 
-interface ImageContainerProps {
-  colSpan?: 1 | 2;
-  rowSpan?: 1 | 2;
-  children: React.ReactNode;
-  onClick?: () => void;
-}
-
-const ImageContainer = ({ colSpan = 1, rowSpan = 1, children, onClick }: ImageContainerProps) => {
-  const colSpans = colSpan === 2 ? "sm:col-span-2" : "";
-  const rowSpans = rowSpan === 2 ? "sm:row-span-2" : "";
+const Tools = ({ list }: { list: string[] }) => {
   return (
-    <div
-      className={`relative max-h-[100vh] overflow-hidden outline outline-dotted outline-gray-600 sm:max-h-none ${colSpans} ${rowSpans} cursor-pointer transition-transform hover:scale-[1.02]`.trim()}
-      onClick={onClick}
-      role="button"
-      tabIndex={0}
-    >
-      {children}
+    <div className="flex flex-row flex-wrap gap-2">
+      {list.map(item => (
+        <span key={item} className="px-3 py-1 text-sm font-bold border border-slate-400 text-slate-400 rounded-full">
+          {item}
+        </span>
+      ))}
     </div>
   );
 };
 
 export default function Home() {
-  const [selectedImage, setSelectedImage] = useState<{ src: typeof fgcoHomeHero; alt: string } | null>(null);
-
   return (
     <main>
       <Intro />
       <Section>
         <div className="flex flex-col gap-8 md:flex-row">
-          <div className="grow grid grid-col-1 gap-4 sm:aspect-[3/2] sm:grid-cols-3 sm:grid-rows-2">
-            <ImageDialog isOpen={selectedImage !== null} onClose={() => setSelectedImage(null)}>
-              {selectedImage && (
-                <Image src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto" sizes="90vw" />
-              )}
-            </ImageDialog>
-            <ImageContainer
-              colSpan={2}
-              onClick={() => setSelectedImage({ src: fgcoHomeHero, alt: "For Good & Company - Hero Video Screenshot" })}
-            >
-              <Image
-                src={fgcoHomeHero}
-                alt="For Good & Company - Hero Video Screenshot"
-                className="absolute inset-0 h-auto w-full"
-                sizes="(min-width: 640px) 66vw, 100vw"
-              />
-            </ImageContainer>
-            <ImageContainer
-              rowSpan={2}
-              onClick={() =>
-                setSelectedImage({ src: fgcoDame, alt: "For Good & Company - Fullpage Dame Dedication Screenshot" })
-              }
-            >
-              <Image
-                src={fgcoDame}
-                alt="For Good & Company - Fullpage Dame Dedication Screenshot"
-                className="absolute inset-0 h-auto w-full"
-                sizes="(min-width: 640px) 33vw, 100vw"
-              />
-            </ImageContainer>
-            <ImageContainer
-              colSpan={2}
-              onClick={() =>
-                setSelectedImage({ src: fgcoSinfire, alt: "For Good & Company - Fullpage Sinfire Screenshot" })
-              }
-            >
-              <Image
-                src={fgcoSinfire}
-                alt="For Good & Company - Fullpage Sinfire Screenshot"
-                className="absolute inset-0 h-auto w-full"
-                sizes="(min-width: 640px) 66vw, 100vw"
-              />
-            </ImageContainer>
+          <div className="flex-2 self-start rounded-lg border-2 border-slate-400 overflow-hidden">
+            <Image src={fgcoScreenshot} alt="Screenshot from forgoodandco.com" />
           </div>
-          <div className="basis-1/3">
-            <div className="sticky top-0">
-              <h1>For Good &amp; Company - Website</h1>
-              <p>
-                This is an agency site to showcase their work and services. I worked closely with the creative team to
-                on the design and development of the site. Creative handed off Figma designs for the look and feel and
-                components for the site. I chose to use Next.js
-              </p>
+          <div className="flex-1 flex flex-col gap-4">
+            <h1 className="text-3xl font-bold text-pretty">For Good &amp; Company - Website</h1>
+            <p className="text-balance">
+              This is an agency site to showcase their work and services. I worked closely with the creative team to on
+              the design and development of the site. Creative handed off Figma designs for the look and feel and
+              components for the site. I chose to use Next.js
+            </p>
+            <Tools list={["NextJS", "React", "Sanity.io", "JSX", "CSS"]} />
+            <div className="flex flex-row flex-wrap gap-2">
+              <Link
+                href="https://forgoodandco.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-background"
+              >
+                View Site <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
