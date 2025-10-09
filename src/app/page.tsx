@@ -5,7 +5,7 @@ import projects from "@/projects.json";
 
 export default function Home() {
   return (
-    <main>
+    <main className="border-4">
       <Intro />
       {projects.map(project => (
         <Project key={project.title} {...project} />

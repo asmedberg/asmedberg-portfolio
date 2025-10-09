@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import ThemeToggler from "@/components/ThemeToggler";
+import Background from "@/components/layout/Background";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,8 +26,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`bg-light text-dark dark:bg-dark dark:text-light ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ThemeProvider attribute="class">
+          <Background>
+            <>
+              <ThemeToggler />
+              {children}
+            </>
+          </Background>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

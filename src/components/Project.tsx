@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image, Video } from "@imagekit/next";
 import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Section from "./layout/Section";
@@ -23,22 +23,25 @@ interface ProjectProps {
   };
 }
 
+const imagekit_endpoint = process.env.NEXT_PUBLIC_IMAGEKIT_ENDPOINT;
+
 export default function Project(props: ProjectProps) {
-  const { image, title, description, tools, links } = props;
+  const { image, video, title, description, tools, links } = props;
   return (
     <Section>
       <div className="grow flex flex-col gap-8 md:flex-row md:items-center">
-        <div className="flex-2 rounded-lg border-2 border-slate-400 overflow-hidden">
-          {image && <Image src={image.source} alt={image.alt} width={image.width} height={image.height} />}
-        </div>
-        <div className="flex-1 flex flex-col gap-4">
-          <h1 className="text-3xl font-bold text-pretty">{title}</h1>
-          <div className="space-y-2">
-            {description.map((desc, i) => (
-              <p key={i} className="text-balance">
-                {desc}
-              </p>
-            ))}
+        <div className="flex flex-col gap-3 basis-2/3">
+          <div className="flex-2 rounded-lg border-2 border-slate-400 overflow-hidden">
+            {image && (
+              <Image
+                urlEndpoint={imagekit_endpoint}
+                src={image.source}
+                alt={image.alt}
+                width={image.width}
+                height={image.height}
+              />
+            )}
+            {video && <Video urlEndpoint={imagekit_endpoint} src={video.source} title={video.title} controls />}
           </div>
           <div className="flex flex-row flex-wrap gap-2">
             {tools?.map(item => (
@@ -50,6 +53,17 @@ export default function Project(props: ProjectProps) {
               </span>
             ))}
           </div>
+        </div>
+        <div className="flex-1 basis-1/3 flex flex-col gap-4">
+          <h1 className="text-3xl font-bold text-pretty">{title}</h1>
+          <div className="space-y-2">
+            {description.map((desc, i) => (
+              <p key={i} className="text-balance">
+                {desc}
+              </p>
+            ))}
+          </div>
+
           {(links?.project || links?.code) && (
             <div className="flex flex-row flex-wrap gap-2">
               {links.project && (

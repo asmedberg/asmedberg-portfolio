@@ -1,7 +1,7 @@
 [
   {
     "image": {
-      "source": "/images/fgco-screenshot.png",
+      "source": "/fgco-screenshot.png?updatedAt=1759792486136",
       "alt": "Screenshot from forgoodandco.com",
       "width": 1920,
       "height": 1200
@@ -18,8 +18,8 @@
   },
   {
     "video": {
-      "source": "",
-      "title": ""
+      "source": "/mix-hunter-game-play.mov/ik-video.mp4?updatedAt=1759792801918",
+      "title": "Mix Hunter Gameplay"
     },
     "title": "Mix Hunter - TouchDesigner",
     "description": [
