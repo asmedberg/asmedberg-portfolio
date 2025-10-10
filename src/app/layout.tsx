@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import ThemeToggler from "@/components/ThemeToggler";
-import Background from "@/components/layout/Background";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,12 +30,10 @@ export default function RootLayout({
         className={`bg-light text-dark dark:bg-dark dark:text-light ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider attribute="class">
-          <Background>
-            <>
-              <ThemeToggler />
-              {children}
-            </>
-          </Background>
+          <div className="p-6 bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-top bg-cover">
+            <ThemeToggler />
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
