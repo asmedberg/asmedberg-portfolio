@@ -48,7 +48,7 @@ export default function Project(props: ProjectProps) {
             {tools?.map(item => (
               <span
                 key={item}
-                className="px-3 py-1 text-sm font-bold border border-slate-400 text-slate-400 rounded-full"
+                className="px-3 py-1 text-sm font-bold border border-[var(--blue)] text-[var(--blue)] dark:border-[#859ECF] dark:text-[#859ECF] rounded-full"
               >
                 {item}
               </span>
@@ -69,7 +69,7 @@ export default function Project(props: ProjectProps) {
                   href={links.project}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-background"
+                  className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-light hover:dark:text-dark"
                 >
                   View Site <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                 </Link>
@@ -79,7 +79,7 @@ export default function Project(props: ProjectProps) {
                   href={links.code}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-background"
+                  className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-light hover:dark:text-dark"
                 >
                   View Code <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                 </Link>
