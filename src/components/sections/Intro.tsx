@@ -15,14 +15,14 @@ export default function Intro() {
       gsap.set(".split", { opacity: 1 });
 
       SplitText.create(".split", {
-        type: "words",
+        type: "chars",
         autoSplit: true,
-        lineClass: "mt-0",
+        lineClass: "m-0",
         onSplit: self => {
-          return gsap.from(self.words, {
-            y: 20,
+          return gsap.from(self.chars, {
+            y: 2,
             opacity: 0,
-            stagger: 0.05,
+            stagger: 0.01,
             onComplete: () => self.revert()
           });
         }
@@ -35,11 +35,8 @@ export default function Intro() {
     <Section>
       <div ref={container} className="grow flex flex-col justify-center">
         <div className="split opacity-0">
-          <h1 className="mb-2 font-bold text-3xl sm:text-5xl lg:text-7xl">
-            Hi! 👋
-            <br />
-            I&rsquo;m Adam
-          </h1>
+          <h1 className="font-bold text-3xl sm:text-5xl lg:text-7xl">Hi! 👋</h1>
+          <h2 className="mb-2 font-bold text-3xl sm:text-5xl lg:text-7xl">I&rsquo;m Adam</h2>
           <p className="text-lg leading-tight text-pretty">
             I&rsquo;m a web developer specializing in building modern web applications.
           </p>
