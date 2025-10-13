@@ -12,6 +12,8 @@ export default function Intro() {
     () => {
       gsap.registerPlugin(SplitText);
 
+      gsap.set(".split", { opacity: 1 });
+
       SplitText.create(".split", {
         type: "words",
         autoSplit: true,
@@ -32,7 +34,7 @@ export default function Intro() {
   return (
     <Section>
       <div ref={container} className="grow flex flex-col justify-center">
-        <div className="split">
+        <div className="split opacity-0">
           <h1 className="mb-2 font-bold text-3xl sm:text-5xl lg:text-7xl">
             Hi! 👋
             <br />
