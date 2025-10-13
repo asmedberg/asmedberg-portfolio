@@ -29,8 +29,9 @@ export default function Project(props: ProjectProps) {
   const { image, video, title, description, tools, links } = props;
   return (
     <Section>
-      <div className="grow flex flex-col gap-8 md:flex-row md:items-center">
-        <div className="flex flex-col gap-3 basis-2/3">
+      <div className="grow flex flex-col gap-8">
+        <h1 className="text-3xl font-bold text-pretty">{title}</h1>
+        <div className="flex flex-col gap-3">
           <div className="flex-2 rounded-lg border-2 border-slate-400 overflow-hidden">
             {image && (
               <Image
@@ -43,6 +44,16 @@ export default function Project(props: ProjectProps) {
             )}
             {video && <Video urlEndpoint={imagekit_endpoint} src={video.source} title={video.title} controls />}
           </div>
+        </div>
+        <div className="flex flex-col gap-4">
+          <div className="space-y-4 md:columns-2">
+            {description.map((desc, i) => (
+              <p key={i} className="text-pretty">
+                {desc}
+              </p>
+            ))}
+          </div>
+
           <div className="flex flex-row flex-wrap gap-2">
             {tools?.map(item => (
               <span
@@ -51,16 +62,6 @@ export default function Project(props: ProjectProps) {
               >
                 {item}
               </span>
-            ))}
-          </div>
-        </div>
-        <div className="flex-1 basis-1/3 flex flex-col gap-4">
-          <h1 className="text-3xl font-bold text-pretty">{title}</h1>
-          <div className="space-y-2">
-            {description.map((desc, i) => (
-              <p key={i} className="text-balance">
-                {desc}
-              </p>
             ))}
           </div>
 
