@@ -1,11 +1,15 @@
 import Intro from "@/components/sections/Intro";
-import Portfolio from "@/components/sections/Portfolio";
+import Project from "@/components/Project";
+
+import projects from "@/projects.json";
 
 export default function Home() {
   return (
-    <main>
+    <main className="border-4">
       <Intro />
-      <Portfolio />
+      {projects.map(project => (
+        <Project key={project.title} {...project} />
+      ))}
     </main>
   );
 }

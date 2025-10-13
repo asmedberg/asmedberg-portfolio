@@ -1,0 +1,31 @@
+[
+  {
+    "image": {
+      "source": "/fgco-screenshot.png?updatedAt=1759792486136",
+      "alt": "Screenshot from forgoodandco.com",
+      "width": 1920,
+      "height": 1200
+    },
+    "title": "For Good & Company - Website, CMS",
+    "description": [
+      "This is the latest interation of the For Good & Company website. I worked closely with the creative team on the design and development of the site. Creative handed off Figma designs for the look and feel and components for the site.",
+      "I also worked closely with the creative team on the design of the CMS. We wanted designers on our creative to be able to add case studies to the site. I chose a NextJS app because I like its routing and data fetching capabilities and how easy it is to intgrate with Sanity.io. I also enjoy working with Sanity.io because I like how easy it is to customize. Live previews of drafts for case studies allowed designers to make sure the page looked correct before publishing."
+    ],
+    "tools": ["NextJS", "React", "Sanity.io", "CMS", "CSS", "Figma", "Netlify"],
+    "links": {
+      "project": "https://forgoodandco.com"
+    }
+  },
+  {
+    "video": {
+      "source": "/mix-hunter-game-play.mov/ik-video.mp4?updatedAt=1759792801918",
+      "title": "Mix Hunter Gameplay"
+    },
+    "title": "Mix Hunter - TouchDesigner",
+    "description": [
+      "This was a project I worked on at For Good & Company. This was a collaboration between myself, as the developer, and the technical and staging staff. The idea behind this project was to demostrate a number of capabilities we had at the agency. We decided to create an interactive game because games are fun to play, they draw people in, and encourage people to socialize in an event space.",
+      "I developed this project in TouchDesigner because of its ability to control what is displayed on the LED wall and what is projected onto the scrim in front of the LED wall. TouchDesigner connected with our Azure Kinect to track the laser pointer we used in our custom \u201Cphaser\u201D. The \u201Cphaser\u201D was battery powered microcontroller with sensors for the primer and trigger and connected back to TouchDesigner with Bluetooth."
+    ],
+    "tools": ["TouchDesigner", "Interactive", "Installation", "Game"]
+  }
+]
