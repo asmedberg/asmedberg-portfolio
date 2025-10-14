@@ -17,6 +17,40 @@
     }
   },
   {
+    "image": {
+      "source": "/kpnwevents/kpnwevents-home.png?updatedAt=1760393820299",
+      "alt": "kpnwevents.com Home Page",
+      "width": "1920",
+      "height": "1080"
+    },
+    "title": "Sunday Parkways",
+    "description": [
+      "Each Summer, Kaiser Permanente puts on Sunday Parkway events across Portland. There are typically 4 events that include a route for participants to ride or walk through the neighborhood in which the event is taking place. The site has details about each of the Sunday Parkway events as well as linking to articles about community and healthy living.",
+      "This site was done working at For Good &amp; Co. I collaborated with the creative team to build a Figma file for client approval before building the site. I used NextJS and Netlify for hosting for ease of pushing changes to the site. "
+    ],
+    "tools": ["NextJS", "React", "CSS", "Figma", "Netlify"],
+    "links": {
+      "project": "https://kpnwevents.com"
+    }
+  },
+  {
+    "image": {
+      "source": "/riverheadbooks/riverhead-books-home.png?updatedAt=1760394135813",
+      "alt": "riverheadbooksvarietyshow.com Home Page",
+      "width": "1920",
+      "height": "1080"
+    },
+    "title": "Riverhead Variety Show",
+    "description": [
+      "Another For Good &amp; Co project that included a website to host a live playout for Riverhead's Variety Show. The live playout includes a chat for attendees to interact with one another while the show is playing. It also features a game using an AfterEffects animation using the Lottie export and controlled with React. The site also includes an archive of past shows that users can browse and watch.",
+      "This is another NextJS site hosted on Netlify. TailwindCSS is used for the styles. Video embeds and live playout is from Vimeo."
+    ],
+    "tools": ["NextJS", "React", "Interactive", "Live Event", "TailwindCSS", "Netlify"],
+    "links": {
+      "project": "https://riverheadbooksvarietyshow.com"
+    }
+  },
+  {
     "video": {
       "source": "/mix-hunter-game-play.mov/ik-video.mp4?updatedAt=1759792801918",
       "title": "Mix Hunter Gameplay"

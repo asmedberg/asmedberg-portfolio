@@ -25,8 +25,7 @@ interface ProjectProps {
 
 const imagekit_endpoint = process.env.NEXT_PUBLIC_IMAGEKIT_ENDPOINT;
 
-export default function Project(props: ProjectProps) {
-  const { image, video, title, description, tools, links } = props;
+export default function Project({ image, video, title, description, tools, links }: ProjectProps) {
   return (
     <Section>
       <div className="grow flex flex-col gap-4">
