@@ -20,8 +20,8 @@
     "image": {
       "source": "/kpnwevents/kpnwevents-home.png?updatedAt=1760393820299",
       "alt": "kpnwevents.com Home Page",
-      "width": "1920",
-      "height": "1080"
+      "width": 1920,
+      "height": 1080
     },
     "title": "Sunday Parkways",
     "description": [
@@ -37,8 +37,8 @@
     "image": {
       "source": "/riverheadbooks/riverhead-books-home.png?updatedAt=1760394135813",
       "alt": "riverheadbooksvarietyshow.com Home Page",
-      "width": "1920",
-      "height": "1080"
+      "width": 1920,
+      "height": 1080
     },
     "title": "Riverhead Variety Show",
     "description": [

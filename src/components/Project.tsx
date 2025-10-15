@@ -34,8 +34,8 @@ export default function Project({ image, video, title, description, tools, links
           {image && (
             <Image
               urlEndpoint={imagekit_endpoint}
-              src={image.source}
-              alt={image.alt}
+              src={image.source || ""}
+              alt={image.alt || ""}
               width={image.width}
               height={image.height}
             />
