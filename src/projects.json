@@ -1,11 +1,35 @@
 [
   {
-    "image": {
-      "source": "/fgco-screenshot.png?updatedAt=1759792486136",
-      "alt": "Screenshot from forgoodandco.com",
-      "width": 1920,
-      "height": 1200
-    },
+    "assets": [
+      {
+        "type": "image",
+        "source": "/fgco/fgco-screenshot.png",
+        "alt": "Screenshot from forgoodandco.com",
+        "width": 1920,
+        "height": 1200
+      },
+      {
+        "type": "image",
+        "source": "/fgco/batanga-fgco.png",
+        "alt": "Screenshot from forgoodandco.com - Batanga Card",
+        "width": 1920,
+        "height": 1200
+      },
+      {
+        "type": "image",
+        "source": "/fgco/fgco-mobile-love-unites.png",
+        "alt": "Screenshot from forgoodandco.com - Love Unites Page",
+        "width": 788,
+        "height": 1500
+      },
+      {
+        "type": "image",
+        "source": "/fgco/fgco-fullpage-sinfire.png",
+        "alt": "Screenshot from forgoodandco.com - Sinfire Page",
+        "width": 1200,
+        "height": 5381
+      }
+    ],
     "title": "For Good & Company - Website, CMS",
     "description": [
       "This is the latest interation of the For Good & Company website. I worked closely with the creative team on the design and development of the site. Creative handed off Figma designs for the look and feel and components for the site.",
@@ -17,12 +41,15 @@
     }
   },
   {
-    "image": {
-      "source": "/kpnwevents/kpnwevents-home.png?updatedAt=1760393820299",
-      "alt": "kpnwevents.com Home Page",
-      "width": 1920,
-      "height": 1080
-    },
+    "assets": [
+      {
+        "type": "image",
+        "source": "/kpnwevents/kpnwevents-home.png?updatedAt=1760393820299",
+        "alt": "kpnwevents.com Home Page",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
     "title": "Sunday Parkways",
     "description": [
       "Each Summer, Kaiser Permanente puts on Sunday Parkway events across Portland. There are typically 4 events that include a route for participants to ride or walk through the neighborhood in which the event is taking place. The site has details about each of the Sunday Parkway events as well as linking to articles about community and healthy living.",
@@ -34,15 +61,18 @@
     }
   },
   {
-    "image": {
-      "source": "/riverheadbooks/riverhead-books-home.png?updatedAt=1760394135813",
-      "alt": "riverheadbooksvarietyshow.com Home Page",
-      "width": 1920,
-      "height": 1080
-    },
+    "assets": [
+      {
+        "type": "image",
+        "source": "/riverheadbooks/riverhead-books-home.png?updatedAt=1760394135813",
+        "alt": "riverheadbooksvarietyshow.com Home Page",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
     "title": "Riverhead Variety Show",
     "description": [
-      "Another For Good &amp; Co project that included a website to host a live playout for Riverhead's Variety Show. The live playout includes a chat for attendees to interact with one another while the show is playing. It also features a game using an AfterEffects animation using the Lottie export and controlled with React. The site also includes an archive of past shows that users can browse and watch.",
+      "Another For Good & Co project that included a website to host a live playout for Riverhead's Variety Show. The live playout includes a chat for attendees to interact with one another while the show is playing. It also features a game using an AfterEffects animation using the Lottie export and controlled with React. The site also includes an archive of past shows that users can browse and watch.",
       "This is another NextJS site hosted on Netlify. TailwindCSS is used for the styles. Video embeds and live playout is from Vimeo."
     ],
     "tools": ["NextJS", "React", "Interactive", "Live Event", "TailwindCSS", "Netlify"],
@@ -51,10 +81,13 @@
     }
   },
   {
-    "video": {
-      "source": "/mix-hunter-game-play.mov/ik-video.mp4?updatedAt=1759792801918",
-      "title": "Mix Hunter Gameplay"
-    },
+    "assets": [
+      {
+        "type": "video",
+        "source": "/mix-hunter-game-play.mov/ik-video.mp4?updatedAt=1759792801918",
+        "title": "Mix Hunter Gameplay"
+      }
+    ],
     "title": "Mix Hunter - TouchDesigner",
     "description": [
       "This was a project I worked on at For Good & Company. This was a collaboration between myself, as the developer, and the technical and staging staff. The idea behind this project was to demostrate a number of capabilities we had at the agency. We decided to create an interactive game because games are fun to play, they draw people in, and encourage people to socialize in an event space.",

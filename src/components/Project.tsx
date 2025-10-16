@@ -1,19 +1,11 @@
-import { Image, Video } from "@imagekit/next";
 import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Section from "./layout/Section";
+import Slider from "./Slider";
+import { Slide } from "./Slider";
 
-interface ProjectProps {
-  image?: {
-    source: string;
-    alt: string;
-    width: number;
-    height: number;
-  };
-  video?: {
-    source: string;
-    title: string;
-  };
+export interface ProjectProps {
+  assets?: Slide[];
   title: string;
   description: string[];
   tools?: string[];
@@ -23,24 +15,13 @@ interface ProjectProps {
   };
 }
 
-const imagekit_endpoint = process.env.NEXT_PUBLIC_IMAGEKIT_ENDPOINT;
-
-export default function Project({ image, video, title, description, tools, links }: ProjectProps) {
+export default function Project({ assets, title, description, tools, links }: ProjectProps) {
   return (
     <Section>
       <div className="grow flex flex-col gap-4">
         <h1 className="text-3xl font-bold text-pretty">{title}</h1>
         <div className="rounded-lg border-2 border-slate-400 overflow-hidden">
-          {image && (
-            <Image
-              urlEndpoint={imagekit_endpoint}
-              src={image.source || ""}
-              alt={image.alt || ""}
-              width={image.width}
-              height={image.height}
-            />
-          )}
-          {video && <Video urlEndpoint={imagekit_endpoint} src={video.source} title={video.title} controls />}
+          {assets && <Slider slides={assets} />}
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-row flex-wrap gap-2">
@@ -53,7 +34,7 @@ export default function Project({ image, video, title, description, tools, links
               </span>
             ))}
           </div>
-          <div className="space-y-4 md:columns-2">
+          <div className="space-y-7 md:columns-2 md:gap-x-8">
             {description.map((desc, i) => (
               <p key={i} className="text-pretty">
                 {desc}
