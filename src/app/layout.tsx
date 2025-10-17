@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import ThemeToggler from "@/components/ThemeToggler";
+import Header from "@/components/layout/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -27,13 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`bg-light text-dark dark:bg-dark dark:text-light ${geistSans.variable} ${geistMono.variable} font-medium md:text-lg antialiased`}
+        className={[
+          `bg-light dark:bg-dark bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-[center_top]`,
+          `text-dark dark:text-light ${geistSans.variable} ${geistMono.variable} md:text-lg antialiased`
+        ].join(" ")}
       >
         <ThemeProvider attribute="class">
-          <div className="bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-[center_top]">
-            <ThemeToggler />
-            {children}
-          </div>
+          <Header />
+          {children}
         </ThemeProvider>
       </body>
     </html>

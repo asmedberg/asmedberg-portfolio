@@ -54,7 +54,7 @@ export default function ThemeToggler() {
   if (!mounted) return null;
 
   return (
-    <div className="absolute top-12 right-12 z-10 rounded-full bg-dark dark:bg-light">
+    <div className="rounded-full bg-dark dark:bg-light">
       <button
         type="button"
         onClick={() => setOpen(prev => !prev)}
