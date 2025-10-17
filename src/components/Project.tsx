@@ -20,7 +20,7 @@ export default function Project({ assets, title, description, tools, links }: Pr
     <Section>
       <div className="grow flex flex-col gap-4">
         <h1 className="text-3xl font-bold text-pretty">{title}</h1>
-        <div className="rounded-lg border-2 border-slate-400 overflow-hidden">
+        <div className="rounded-lg border-4 border-dark dark:border-light overflow-hidden">
           {assets && <Slider slides={assets} />}
         </div>
         <div className="flex flex-col gap-4">

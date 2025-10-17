@@ -17,17 +17,17 @@
       },
       {
         "type": "image",
-        "source": "/fgco/fgco-mobile-love-unites.png",
+        "source": "/fgco/fgco-mobile-love-unites_400x761.png",
         "alt": "Screenshot from forgoodandco.com - Love Unites Page",
-        "width": 788,
-        "height": 1500
+        "width": 400,
+        "height": 761
       },
       {
         "type": "image",
-        "source": "/fgco/fgco-fullpage-sinfire.png",
+        "source": "/fgco/fgco-fullpage-sinfire.jpg",
         "alt": "Screenshot from forgoodandco.com - Sinfire Page",
-        "width": 1200,
-        "height": 5381
+        "width": 800,
+        "height": 3587
       }
     ],
     "title": "For Good & Company - Website, CMS",
