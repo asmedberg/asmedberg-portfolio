@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`bg-light text-dark dark:bg-dark dark:text-light ${geistSans.variable} ${geistMono.variable} font-medium md:text-lg antialiased`}
       >
         <ThemeProvider attribute="class">
-          <div className="p-3 md:p-6 bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-[center_top]">
+          <div className="bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-[center_top]">
             <ThemeToggler />
             {children}
           </div>
