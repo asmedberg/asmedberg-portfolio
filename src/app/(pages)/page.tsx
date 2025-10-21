@@ -4,7 +4,7 @@ import { ProjectProps } from "@/components/Project";
 
 import projects from "@/projects.json";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <Intro />
