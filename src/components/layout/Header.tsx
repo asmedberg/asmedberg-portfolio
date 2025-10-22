@@ -39,6 +39,7 @@ export default async function Header() {
   return (
     <header className="absolute top-0 w-full p-4 flex flex-row flex-nowrap items-start justify-end gap-x-2">
       <StyledLink href="https://github.com/asmedberg">Github</StyledLink>
+      <StyledLink href="https://www.linkedin.com/in/asmedberg/">LinkedIn</StyledLink>
       <StyledLink href={resumeUrl}>Resume</StyledLink>
       <ThemeToggler />
     </header>
