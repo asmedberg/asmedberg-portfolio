@@ -2,7 +2,7 @@ import { PortableText, PortableTextReactComponents } from "next-sanity";
 import { client } from "@/sanity/lib/client";
 import { INTRO_QUERY } from "@/sanity/lib/queries";
 import Section from "@/components/layout/Section";
-import { type BlockContent } from "@/sanity/types/sanity.types";
+import { type INTRO_QUERYResult } from "@/sanity/types/sanity.types";
 
 const introComponents: Partial<PortableTextReactComponents> = {
   block: {
@@ -12,15 +12,27 @@ const introComponents: Partial<PortableTextReactComponents> = {
   }
 };
 
-export default async function Intro() {
-  const intro = await client.fetch<BlockContent>(INTRO_QUERY);
+const getIntro = async () => {
+  try {
+    const intro = await client.fetch<INTRO_QUERYResult>(INTRO_QUERY);
+    if (!intro?.content) {
+      throw new Error("Content not returned");
+    }
+    return intro?.content;
+  } catch (error) {
+    console.error(`Something went wrong; ${error}`);
+  }
+};
 
-  if (!intro?.content) return null;
+export default async function Intro() {
+  const content = await getIntro();
+
+  if (!content) return null;
 
   return (
     <Section>
       <div className="grow flex flex-col justify-center max-w-prose mx-auto">
-        <PortableText value={intro?.content} components={introComponents} />
+        <PortableText value={content} components={introComponents} />
       </div>
     </Section>
   );

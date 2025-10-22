@@ -1,7 +1,9 @@
 import { defineQuery } from "next-sanity";
 
 // Query for intro content
-export const INTRO_QUERY = defineQuery(`*[_type == "settings"][0].intro`);
+export const INTRO_QUERY = defineQuery(`*[_type == "settings"][0]{
+  "content": intro.content
+}`);
 
 // Query for resume file
 export const RESUME_QUERY = defineQuery(`*[_type == "settings"][0].resume`);

@@ -253,8 +253,27 @@ export type AllSanitySchemaTypes = Link | ProjectVideo | ProjectImage | Projects
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: INTRO_QUERY
-// Query: *[_type == "settings"][0].intro
-export type INTRO_QUERYResult = BlockContent | null;
+// Query: *[_type == "settings"][0]{  "content": intro.content}
+export type INTRO_QUERYResult = {
+  content: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+} | null;
 // Variable: RESUME_QUERY
 // Query: *[_type == "settings"][0].resume
 export type RESUME_QUERYResult = {
@@ -318,7 +337,7 @@ export type PROJECTS_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"settings\"][0].intro": INTRO_QUERYResult;
+    "*[_type == \"settings\"][0]{\n  \"content\": intro.content\n}": INTRO_QUERYResult;
     "*[_type == \"settings\"][0].resume": RESUME_QUERYResult;
     "*[_type == \"settings\"][0].projectOrder[]->{\n  ...,\n  assets[]{\n    ...,\n    _type == \"projectImage\" =>{\n      asset->{\n        _id,\n        url,\n        metadata{\n          dimensions{\n            aspectRatio,\n            height,\n            width\n          },\n          lqip\n        }\n      }\n    }\n  }\n}": PROJECTS_QUERYResult;
   }
