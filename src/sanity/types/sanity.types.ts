@@ -245,11 +245,58 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Variable: INTRO_QUERY
 // Query: *[_type == "settings"][0].intro
 export type INTRO_QUERYResult = BlockContent | null;
+// Variable: PROJECTS_QUERY
+// Query: *[_type == "settings"][0].projectOrder[]->{  ...,  assets[]{    ...,    _type == "projectImage" =>{      asset->{        _id,        url,        metadata{          dimensions{            aspectRatio,            height,            width          },          lqip        }      }    }  }}
+export type PROJECTS_QUERYResult = Array<{
+  _id: string;
+  _type: "projects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  projectContent?: BlockContent;
+  assets: Array<{
+    _key: string;
+    _type: "projectImage";
+    asset: {
+      _id: string;
+      url: string | null;
+      metadata: {
+        dimensions: {
+          aspectRatio: number | null;
+          height: number | null;
+          width: number | null;
+        } | null;
+        lqip: string | null;
+      } | null;
+    } | null;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    altText?: string;
+  } | {
+    _key: string;
+    _type: "projectVideo";
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    discription?: string;
+  }> | null;
+  tools?: Array<string>;
+  links?: Array<{
+    _key: string;
+  } & Link>;
+}> | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0].intro": INTRO_QUERYResult;
+    "*[_type == \"settings\"][0].projectOrder[]->{\n  ...,\n  assets[]{\n    ...,\n    _type == \"projectImage\" =>{\n      asset->{\n        _id,\n        url,\n        metadata{\n          dimensions{\n            aspectRatio,\n            height,\n            width\n          },\n          lqip\n        }\n      }\n    }\n  }\n}": PROJECTS_QUERYResult;
   }
 }

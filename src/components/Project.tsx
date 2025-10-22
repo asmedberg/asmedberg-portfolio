@@ -2,20 +2,26 @@ import Link from "next/link";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
 import Section from "./layout/Section";
 import Slider from "./Slider";
-import { Slide } from "./Slider";
+import { type BlockContent } from "@/sanity/types/sanity.types";
+import ProjectDetails from "./ProjectDetails";
+import { type SanityImageProps } from "./SanityImage";
+import { type SanityVideoProps } from "./SanityVideo";
 
-export interface ProjectProps {
-  assets?: Slide[];
-  title: string;
-  description: string[];
+interface ProjectProps {
+  _id: string;
+  title?: string;
+  projectContent?: BlockContent;
+  assets?: (SanityImageProps | SanityVideoProps)[];
   tools?: string[];
-  links?: {
-    project?: string;
-    code?: string;
-  };
+  links?: Array<{
+    _key: string;
+    name: string;
+    url: string;
+  }>;
 }
 
-export default function Project({ assets, title, description, tools, links }: ProjectProps) {
+export default function Project(props: ProjectProps) {
+  const { assets, title, projectContent, tools, links } = props;
   return (
     <Section>
       <div className="grow flex flex-col gap-4">
@@ -34,36 +40,21 @@ export default function Project({ assets, title, description, tools, links }: Pr
               </span>
             ))}
           </div>
-          <div className="space-y-7 md:columns-2 md:gap-x-8">
-            {description.map((desc, i) => (
-              <p key={i} className="text-pretty">
-                {desc}
-              </p>
-            ))}
-          </div>
+          {projectContent && <ProjectDetails {...projectContent} />}
 
-          {(links?.project || links?.code) && (
+          {links && (
             <div className="flex flex-row flex-wrap gap-2">
-              {links.project && (
+              {links.map(link => (
                 <Link
-                  href={links.project}
+                  key={link.name}
+                  href={link.url || ""}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-light hover:dark:text-dark"
                 >
-                  View Site <ArrowTopRightOnSquareIcon className="w-4 h-4" />
+                  {link.name} <ArrowTopRightOnSquareIcon className="w-4 h-4" />
                 </Link>
-              )}
-              {links.code && (
-                <Link
-                  href={links.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-row flex-nowrap gap-2 items-center px-4 py-2 rounded-full border-2 border-blue-400 font-bold text-blue-400 hover:bg-blue-400 hover:text-light hover:dark:text-dark"
-                >
-                  View Code <ArrowTopRightOnSquareIcon className="w-4 h-4" />
-                </Link>
-              )}
+              ))}
             </div>
           )}
         </div>

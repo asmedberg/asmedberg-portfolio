@@ -1,57 +1,16 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { Image, Video } from "@imagekit/next";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-
-interface BaseSlide {
-  type: "image" | "video";
-  source: string;
-}
-
-interface ImageSlide extends BaseSlide {
-  type: "image";
-  alt: string;
-  width: number;
-  height: number;
-}
-
-interface VideoSlide extends BaseSlide {
-  type: "video";
-  title: string;
-}
+import SanityImage, { type SanityImageProps } from "./SanityImage";
+import SanityVideo, { type SanityVideoProps } from "./SanityVideo";
 
 interface SliderProps {
-  slides: Slide[];
+  slides: (SanityImageProps | SanityVideoProps)[];
 }
 
-export type Slide = ImageSlide | VideoSlide;
-
-const imagekit_endpoint = process.env.NEXT_PUBLIC_IMAGEKIT_ENDPOINT;
-
-const renderSlide = (slide: Slide) => {
-  if (slide.type === "image")
-    return (
-      <Image
-        urlEndpoint={imagekit_endpoint}
-        src={slide.source || ""}
-        alt={slide.alt || ""}
-        width={slide.width}
-        height={slide.height}
-        className="pointer-events-auto"
-      />
-    );
-
-  if (slide.type === "video")
-    return (
-      <Video
-        urlEndpoint={imagekit_endpoint}
-        src={slide.source}
-        title={slide.title}
-        controls
-        className="pointer-events-auto"
-      />
-    );
-
+const renderSlide = (slide: SanityImageProps | SanityVideoProps) => {
+  if (slide._type === "projectImage") return <SanityImage {...slide} />;
+  if (slide._type === "projectVideo") return <SanityVideo {...slide} />;
   return null;
 };
 
@@ -95,12 +54,12 @@ export default function Slider({ slides }: SliderProps) {
         ref={containerRef}
         className="relative w-full h-full flex flex-row flex-nowrap transition-all duration-500 ease-in-out"
       >
-        {slides?.map((slide, i) => (
+        {slides?.map(slide => (
           <div
-            key={i}
-            onClick={slide.type === "image" ? handleOverlayOpen : undefined}
+            key={slide._key}
+            onClick={slide._type === "projectImage" ? handleOverlayOpen : undefined}
             className={`w-full h-auto shrink-0 grow-1 basis-full flex justify-center items-start bg-dark dark:bg-light ${
-              slide.type === "image" ? "cursor-zoom-in" : ""
+              slide._type === "projectImage" ? "cursor-zoom-in" : ""
             }`.trim()}
           >
             {renderSlide(slide)}
@@ -135,7 +94,7 @@ export default function Slider({ slides }: SliderProps) {
           <div className="absolute bottom-0 z-20 w-full p-4 flex flex-row flex-nowrap justify-center gap-2">
             {slides.map((s, i) => (
               <button
-                key={i}
+                key={s._key}
                 disabled={currentSlideIndex === i}
                 onClick={() => setCurrentSlideIndex(i)}
                 className="block w-4 h-4 rounded-full bg-white shadow shadow-black cursor-pointer pointer-events-auto disabled:bg-[var(--blue)] disabled:cursor-default"
