@@ -1,7 +1,22 @@
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { RESUME_QUERY } from "@/sanity/lib/queries";
+import { RESUME_QUERYResult } from "@/sanity/types/sanity.types";
+import { urlForFile } from "@/sanity/lib/video";
 import ThemeToggler from "@/components/ThemeToggler";
 
-const resume_path = process.env.NEXT_PUBLIC_RESUME_PATH;
+const getResume = async () => {
+  try {
+    const resume = await client.fetch<RESUME_QUERYResult>(RESUME_QUERY);
+    if (!resume?.asset) {
+      throw new Error("Asset not returned");
+    }
+    return resume.asset;
+  } catch (error) {
+    console.error(`Something went wrong: ${error}`);
+    return null;
+  }
+};
 
 const StyledLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
   <Link
@@ -17,11 +32,14 @@ const StyledLink = ({ href, children }: { href: string; children: React.ReactNod
   </Link>
 );
 
-export default function Header() {
+export default async function Header() {
+  const resumeAsset = await getResume();
+  const resumeUrl = resumeAsset ? urlForFile(resumeAsset) : "";
+
   return (
     <header className="absolute top-0 w-full p-4 flex flex-row flex-nowrap items-start justify-end gap-x-2">
       <StyledLink href="https://github.com/asmedberg">Github</StyledLink>
-      {resume_path && <StyledLink href={resume_path}>Resume</StyledLink>}
+      <StyledLink href={resumeUrl}>Resume</StyledLink>
       <ThemeToggler />
     </header>
   );

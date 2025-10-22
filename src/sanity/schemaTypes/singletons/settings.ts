@@ -18,6 +18,11 @@ export default defineType({
       type: "blockContent"
     }),
     defineField({
+      name: "resume",
+      title: "Resume",
+      type: "file"
+    }),
+    defineField({
       name: "projectOrder",
       title: "Project Order",
       type: "array",

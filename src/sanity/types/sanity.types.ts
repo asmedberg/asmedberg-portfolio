@@ -72,6 +72,16 @@ export type Settings = {
   _rev: string;
   title?: string;
   intro?: BlockContent;
+  resume?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+    };
+    media?: unknown;
+    _type: "file";
+  };
   projectOrder?: Array<{
     _ref: string;
     _type: "reference";
@@ -245,6 +255,18 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Variable: INTRO_QUERY
 // Query: *[_type == "settings"][0].intro
 export type INTRO_QUERYResult = BlockContent | null;
+// Variable: RESUME_QUERY
+// Query: *[_type == "settings"][0].resume
+export type RESUME_QUERYResult = {
+  asset?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
+  };
+  media?: unknown;
+  _type: "file";
+} | null;
 // Variable: PROJECTS_QUERY
 // Query: *[_type == "settings"][0].projectOrder[]->{  ...,  assets[]{    ...,    _type == "projectImage" =>{      asset->{        _id,        url,        metadata{          dimensions{            aspectRatio,            height,            width          },          lqip        }      }    }  }}
 export type PROJECTS_QUERYResult = Array<{
@@ -297,6 +319,7 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0].intro": INTRO_QUERYResult;
+    "*[_type == \"settings\"][0].resume": RESUME_QUERYResult;
     "*[_type == \"settings\"][0].projectOrder[]->{\n  ...,\n  assets[]{\n    ...,\n    _type == \"projectImage\" =>{\n      asset->{\n        _id,\n        url,\n        metadata{\n          dimensions{\n            aspectRatio,\n            height,\n            width\n          },\n          lqip\n        }\n      }\n    }\n  }\n}": PROJECTS_QUERYResult;
   }
 }
