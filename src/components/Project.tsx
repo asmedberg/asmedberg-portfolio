@@ -34,7 +34,7 @@ export default function Project(props: ProjectProps) {
             {tools?.map(item => (
               <span
                 key={item}
-                className="px-3 py-1 text-sm font-bold border border-[var(--blue)] text-[var(--blue)] dark:border-[#859ECF] dark:text-[#859ECF] rounded-full"
+                className="px-3 py-1 text-sm font-bold border border-(--blue) text-(--blue) dark:border-[#859ECF] dark:text-[#859ECF] rounded-full"
               >
                 {item}
               </span>

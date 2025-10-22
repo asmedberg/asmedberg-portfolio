@@ -58,7 +58,7 @@ export default function Slider({ slides }: SliderProps) {
           <div
             key={slide._key}
             onClick={slide._type === "projectImage" ? handleOverlayOpen : undefined}
-            className={`w-full h-auto shrink-0 grow-1 basis-full flex justify-center items-start bg-dark dark:bg-light ${
+            className={`w-full h-auto shrink-0 grow basis-full flex justify-center items-start bg-dark dark:bg-light ${
               slide._type === "projectImage" ? "cursor-zoom-in" : ""
             }`.trim()}
           >
@@ -68,7 +68,7 @@ export default function Slider({ slides }: SliderProps) {
       </div>
       {slides.length > 1 && (
         <div className="absolute inset-0 z-10 pointer-events-none">
-          <div className="absolute top-1/2 z-20 -translate-y-1/2 w-full p-2 flex flex-row flex-nowrap justify-between text-[var(--blue)]">
+          <div className="absolute top-1/2 z-20 -translate-y-1/2 w-full p-2 flex flex-row flex-nowrap justify-between text-(--blue)">
             <button
               disabled={currentSlideIndex === 0}
               onClick={() => setCurrentSlideIndex(prev => prev - 1)}
@@ -97,7 +97,7 @@ export default function Slider({ slides }: SliderProps) {
                 key={s._key}
                 disabled={currentSlideIndex === i}
                 onClick={() => setCurrentSlideIndex(i)}
-                className="block w-4 h-4 rounded-full bg-white shadow shadow-black cursor-pointer pointer-events-auto disabled:bg-[var(--blue)] disabled:cursor-default"
+                className="block w-4 h-4 rounded-full bg-white shadow shadow-black cursor-pointer pointer-events-auto disabled:bg-(--blue) disabled:cursor-default"
               >
                 <span className="sr-only">{`Slide ${i + 1}`}</span>
               </button>
