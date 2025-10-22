@@ -6,9 +6,9 @@ import { type BlockContent } from "@/sanity/types/sanity.types";
 
 const introComponents: Partial<PortableTextReactComponents> = {
   block: {
-    h1: ({ children }) => <h1 className="font-bold text-3xl sm:text-5xl lg:text-7xl">{children}</h1>,
-    h2: ({ children }) => <h2 className="mb-2 font-bold text-3xl sm:text-5xl lg:text-7xl">{children}</h2>,
-    normal: ({ children }) => <p className="mb-2 text-xl text-pretty">{children}</p>
+    h1: ({ children }) => <h1 className="font-bold text-5xl md:text-7xl">{children}</h1>,
+    h2: ({ children }) => <h2 className="mb-4 font-bold text-5xl md:text-7xl">{children}</h2>,
+    normal: ({ children }) => <p className="mb-4 text-lg md:text-xl text-pretty">{children}</p>
   }
 };
 
@@ -19,7 +19,7 @@ export default async function Intro() {
 
   return (
     <Section>
-      <div className="grow flex flex-col justify-center">
+      <div className="grow flex flex-col justify-center max-w-prose mx-auto">
         <PortableText value={intro?.content} components={introComponents} />
       </div>
     </Section>
