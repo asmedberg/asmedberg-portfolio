@@ -8,7 +8,7 @@ const introComponents: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children }) => <h1 className="font-bold text-3xl sm:text-5xl lg:text-7xl">{children}</h1>,
     h2: ({ children }) => <h2 className="mb-2 font-bold text-3xl sm:text-5xl lg:text-7xl">{children}</h2>,
-    normal: ({ children }) => <p className="text-lg text-pretty">{children}</p>
+    normal: ({ children }) => <p className="mb-2 text-xl text-pretty">{children}</p>
   }
 };
 
