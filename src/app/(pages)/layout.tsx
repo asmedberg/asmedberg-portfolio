@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={[
-          `bg-light dark:bg-dark bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-[center_top]`,
+          `bg-light dark:bg-dark bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-position-[center_top]`,
           `text-dark dark:text-light ${geistSans.variable} ${geistMono.variable} md:text-lg antialiased`
         ].join(" ")}
       >
