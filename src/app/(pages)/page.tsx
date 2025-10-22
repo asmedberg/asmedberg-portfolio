@@ -1,8 +1,8 @@
 import { client } from "@/sanity/lib/client";
 import { PROJECTS_QUERY } from "@/sanity/lib/queries";
-import { Projects, PROJECTS_QUERYResult } from "@/sanity/types/sanity.types";
+import { PROJECTS_QUERYResult } from "@/sanity/types/sanity.types";
 import Intro from "@/components/sections/Intro";
-import Project from "@/components/Project";
+import Project, { type ProjectProps } from "@/components/Project";
 
 const getProjects = async () => {
   try {
@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <main>
       <Intro />
-      {(projects as Projects[]).map(project => (
+      {(projects as ProjectProps[]).map(project => (
         <Project key={project._id} {...project} />
       ))}
     </main>

@@ -7,7 +7,7 @@ import ProjectDetails from "./ProjectDetails";
 import { type SanityImageProps } from "./SanityImage";
 import { type SanityVideoProps } from "./SanityVideo";
 
-interface ProjectProps {
+export interface ProjectProps {
   _id: string;
   title?: string;
   projectContent?: BlockContent;
