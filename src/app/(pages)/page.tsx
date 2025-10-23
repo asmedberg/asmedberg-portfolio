@@ -8,11 +8,11 @@ const getProjects = async () => {
   try {
     const projects = await client.fetch<PROJECTS_QUERYResult>(PROJECTS_QUERY);
     if (!projects) {
-      return { error: "No projects returned." };
+      throw new Error("Projects not returned");
     }
     return projects;
   } catch (error) {
-    return { error: `Something went wrong: ${error}` };
+    return console.error(error);
   }
 };
 
@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <main>
       <Intro />
-      {(projects as ProjectProps[]).map(project => (
+      {(projects as ProjectProps[])?.map(project => (
         <Project key={project._id} {...project} />
       ))}
     </main>

@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { XMarkIcon } from "@heroicons/react/24/outline";
 import SanityImage, { type SanityImageProps } from "./SanityImage";
 import SanityVideo, { type SanityVideoProps } from "./SanityVideo";
+import Overlay from "./Overlay";
 
 interface SliderProps {
   slides: (SanityImageProps | SanityVideoProps)[];
@@ -106,19 +106,15 @@ export default function Slider({ slides }: SliderProps) {
         </div>
       )}
       {overlayOpen && (
-        <>
-          <div onClick={handleOverlayClose} className="fixed inset-0 z-10 bg-black/50" />
-          <button
-            onClick={handleOverlayClose}
-            className="fixed top-4 right-4 z-30 rounded-full p-2 bg-white text-black shadow-md shadow-black cursor-pointer"
-          >
-            <XMarkIcon className="w-6 h-6" />
-            <span className="sr-only">Close</span>
-          </button>
-          <div className="fixed inset-0 z-20 p-0 sm:p-4 md:p-8 flex items-start justify-center overflow-y-scroll pointer-events-none">
-            {renderSlide(slides[currentSlideIndex])}
-          </div>
-        </>
+        <Overlay closeOverlay={handleOverlayClose}>
+          {slides[currentSlideIndex]._type === "projectImage" ? (
+            <SanityImage {...slides[currentSlideIndex]} />
+          ) : slides[currentSlideIndex]._type === "projectVideo" ? (
+            <SanityVideo {...slides[currentSlideIndex]} />
+          ) : (
+            <p>No asset found.</p>
+          )}
+        </Overlay>
       )}
     </div>
   );
