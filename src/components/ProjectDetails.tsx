@@ -1,7 +1,19 @@
-import { PortableText } from "next-sanity";
+import { PortableText, PortableTextReactComponents } from "next-sanity";
 import { BlockContent } from "@/sanity/types/sanity.types";
+
+const contentComponents: Partial<PortableTextReactComponents> = {
+  block: {
+    h1: ({ children }) => <h1 className="font-bold text-pretty text-2xl sm:text-3xl">{children}</h1>,
+    h2: ({ children }) => <h2 className="font-bold text-pretty text-xl sm:text-2xl">{children}</h2>,
+    h3: ({ children }) => <h3 className="font-bold text-pretty text-lg sm:text-xl">{children}</h3>,
+    h4: ({ children }) => <h4 className="font-bold text-pretty text-base sm:text-lg">{children}</h4>,
+    normal: ({ children }) => <p className="text-pretty text-base sm:text-lg">{children}</p>
+  }
+};
 
 export default function ProjectDetails(props: BlockContent) {
   const { content } = props;
-  return <div className="space-y-7 md:columns-2 md:gap-x-8">{content && <PortableText value={content} />}</div>;
+  return (
+    <div className="space-y-3.5">{content && <PortableText value={content} components={contentComponents} />}</div>
+  );
 }
