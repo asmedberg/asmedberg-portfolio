@@ -7,4 +7,6 @@ This is a constant work in progress. I'll continue to add work and personal proj
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_DATASET=your_dataset
+
+SANITY_API_READ_TOKEN=your_read_token
 ```
