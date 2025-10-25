@@ -15,10 +15,12 @@ const contentComponents: Partial<PortableTextReactComponents> = {
   }
 };
 
-export default function ProjectContent(props: ProjectContentProps) {
-  const { content } = props;
+export default function ProjectContent({ content }: ProjectContentProps) {
+  if (!content) return null;
 
   return (
-    <div className="space-y-3.5">{content && <PortableText value={content} components={contentComponents} />}</div>
+    <div className="space-y-3.5">
+      <PortableText value={content} components={contentComponents} />
+    </div>
   );
 }
