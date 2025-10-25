@@ -1,21 +1,16 @@
-import { urlForFile } from "@/sanity/lib/video";
+import { urlForFile } from "@/sanity/lib/file";
+import { ProjectVideo } from "@/sanity/types/sanity.types";
 
-export interface SanityVideoProps {
-  _key: string;
-  _type: "projectVideo";
-  description: string;
-  asset: {
-    _ref: string;
-    _type: "reference";
-  };
+interface SanityVideoProps {
+  asset: ProjectVideo["asset"];
 }
 
-export default function SanityVideo(props: SanityVideoProps) {
-  const source = props?.asset?._ref ? urlForFile(props.asset._ref) : undefined;
+export default function SanityVideo({ asset }: SanityVideoProps) {
+  if (!asset) return null;
 
   return (
     <video
-      src={source}
+      src={urlForFile(asset)}
       autoPlay={false}
       loop={false}
       muted={false}

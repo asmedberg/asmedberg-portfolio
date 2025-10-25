@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { urlForFile } from "@/sanity/lib/video";
+import { urlForFile } from "@/sanity/lib/file";
 import ThemeToggler from "@/components/ThemeToggler";
 import { fetchResume } from "@/sanity/lib/fetch";
 

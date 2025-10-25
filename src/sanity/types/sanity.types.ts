@@ -287,7 +287,7 @@ export type RESUME_QUERYResult = {
   _type: "file";
 } | null;
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "settings"][0].projectOrder[]->{  ...,  assets[]{    ...,    _type == "projectImage" =>{      asset->{        _id,        url,        metadata{          dimensions{            aspectRatio,            height,            width          },          lqip        }      }    }  }}
+// Query: *[_type == "settings"][0].projectOrder[]->
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   _type: "projects";
@@ -296,37 +296,11 @@ export type PROJECTS_QUERYResult = Array<{
   _rev: string;
   title?: string;
   projectContent?: BlockContent;
-  assets: Array<{
+  assets?: Array<{
     _key: string;
-    _type: "projectImage";
-    asset: {
-      _id: string;
-      url: string | null;
-      metadata: {
-        dimensions: {
-          aspectRatio: number | null;
-          height: number | null;
-          width: number | null;
-        } | null;
-        lqip: string | null;
-      } | null;
-    } | null;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    altText?: string;
-  } | {
+  } & ProjectImage | {
     _key: string;
-    _type: "projectVideo";
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
-    };
-    media?: unknown;
-    discription?: string;
-  }> | null;
+  } & ProjectVideo>;
   tools?: Array<string>;
   links?: Array<{
     _key: string;
@@ -339,6 +313,6 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"settings\"][0]{\n  \"content\": intro.content\n}": INTRO_QUERYResult;
     "*[_type == \"settings\"][0].resume": RESUME_QUERYResult;
-    "*[_type == \"settings\"][0].projectOrder[]->{\n  ...,\n  assets[]{\n    ...,\n    _type == \"projectImage\" =>{\n      asset->{\n        _id,\n        url,\n        metadata{\n          dimensions{\n            aspectRatio,\n            height,\n            width\n          },\n          lqip\n        }\n      }\n    }\n  }\n}": PROJECTS_QUERYResult;
+    "*[_type == \"settings\"][0].projectOrder[]->": PROJECTS_QUERYResult;
   }
 }

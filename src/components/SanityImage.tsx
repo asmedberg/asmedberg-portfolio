@@ -1,29 +1,24 @@
 import Image from "next/image";
+import { getImageDimensions } from "@sanity/asset-utils";
 import { urlFor } from "@/sanity/lib/image";
+import { ProjectImage } from "@/sanity/types/sanity.types";
 
-export interface SanityImageProps {
-  _key: string;
-  _type: "projectImage";
-  altText: string;
-  asset: {
-    metadata: {
-      lqip: string;
-      dimensions: {
-        aspectRatio: number;
-        height: number;
-        width: number;
-      };
-    };
-  };
+interface SanityImageProps {
+  asset: ProjectImage["asset"];
+  alt: ProjectImage["altText"];
 }
 
-export default function SanityImage(props: SanityImageProps) {
+export default function SanityImage({ asset, alt }: SanityImageProps) {
+  if (!asset) return null;
+
+  const dims = getImageDimensions(asset);
+
   return (
     <Image
-      src={urlFor(props.asset).url()}
-      alt={props.altText || ""}
-      width={props.asset.metadata.dimensions.width}
-      height={props.asset.metadata.dimensions.height}
+      src={urlFor(asset).url()}
+      alt={alt || ""}
+      width={dims.width}
+      height={dims.height}
       className="pointer-events-auto"
     />
   );
