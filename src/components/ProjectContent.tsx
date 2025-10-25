@@ -1,6 +1,10 @@
 import { PortableText, PortableTextReactComponents } from "next-sanity";
 import { BlockContent } from "@/sanity/types/sanity.types";
 
+interface ProjectContentProps {
+  content: BlockContent["content"];
+}
+
 const contentComponents: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children }) => <h1 className="font-bold text-pretty text-2xl sm:text-3xl">{children}</h1>,
@@ -11,8 +15,9 @@ const contentComponents: Partial<PortableTextReactComponents> = {
   }
 };
 
-export default function ProjectDetails(props: BlockContent) {
+export default function ProjectContent(props: ProjectContentProps) {
   const { content } = props;
+
   return (
     <div className="space-y-3.5">{content && <PortableText value={content} components={contentComponents} />}</div>
   );
