@@ -17,9 +17,11 @@ export default function Slider({ slides }: SliderProps) {
   const [overlayOpen, setOverlayOpen] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // handlers for opening and closing the overlay
   const handleOverlayOpen = () => setOverlayOpen(true);
   const handleOverlayClose = () => setOverlayOpen(false);
 
+  // closes overlay when esc key is pressed
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     const key = event.key;
     if (key === "Escape") {
@@ -27,13 +29,20 @@ export default function Slider({ slides }: SliderProps) {
     }
   }, []);
 
+  // advances slide and pauses any playing videos
   useEffect(() => {
     const container = containerRef.current;
+    const videoSlides = container?.querySelectorAll("video");
+
     if (container) {
       container.style.right = `${currentSlideIndex * 100}%`;
+      if (videoSlides) {
+        videoSlides.forEach(video => video.pause());
+      }
     }
   }, [currentSlideIndex]);
 
+  // prevents body from scrolling when overlay is open
   useEffect(() => {
     const body = document.body;
     if (overlayOpen) {
