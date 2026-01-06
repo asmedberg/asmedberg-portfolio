@@ -8,6 +8,7 @@
   --blue: #26427a;
   --tan: #cfb985;
   --light-blue: #cadafa;
+  --lightest-blue: #dae5fc;
 
   --light: var(--light-blue);
   --dark: var(--dark-blue);

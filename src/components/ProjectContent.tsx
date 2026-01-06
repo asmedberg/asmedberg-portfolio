@@ -1,11 +1,10 @@
-import { PortableText, PortableTextReactComponents } from "next-sanity";
-import { BlockContent } from "@/sanity/types/sanity.types";
+import { PortableText, PortableTextProps } from "next-sanity";
 
 interface ProjectContentProps {
-  content: BlockContent["content"];
+  content: PortableTextProps["value"];
 }
 
-const contentComponents: Partial<PortableTextReactComponents> = {
+const contentComponents: PortableTextProps["components"] = {
   block: {
     h1: ({ children }) => <h1 className="font-bold text-pretty text-2xl sm:text-3xl">{children}</h1>,
     h2: ({ children }) => <h2 className="font-bold text-pretty text-xl sm:text-2xl">{children}</h2>,

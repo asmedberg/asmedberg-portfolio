@@ -1,8 +1,10 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/layout/Header";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import P5Canvas from "@/components/P5Canvas";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +30,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={[
-          `bg-light dark:bg-dark bg-[url('/images/contour-map-light.svg')] dark:bg-[url('/images/contour-map.svg')] bg-fixed bg-position-[center_top]`,
+          `bg-light dark:bg-dark`,
           `text-dark dark:text-light ${geistSans.variable} ${geistMono.variable} md:text-lg antialiased`
         ].join(" ")}
       >
         <ThemeProvider attribute="class">
+          <P5Canvas />
           <Header />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
