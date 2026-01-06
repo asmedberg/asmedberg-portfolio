@@ -14,6 +14,7 @@
     "@sanity/asset-utils": "^2.3.0",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^4.10.3",
+    "@vercel/analytics": "^1.6.1",
     "gsap": "^3.13.0",
     "next": "^16.0.7",
     "next-sanity": "^11.5.5",
